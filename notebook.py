@@ -48,8 +48,9 @@ import re
 import os
 from .mdx_liquid_tags import LiquidTags
 
+from distutils.version import LooseVersion
 import IPython
-if IPython.__version__.split('.')[0] != '1':
+if not LooseVersion(IPython.__version__) >= '1.0':
     raise ValueError("IPython version 1.0+ required for notebook tag")
 
 from IPython import nbconvert
