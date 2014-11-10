@@ -17,7 +17,7 @@ import os
 from functools import wraps
 
 # Define some regular expressions
-LIQUID_TAG = re.compile(r'\{%.*?%\}')
+LIQUID_TAG = re.compile(r'\{%.*?%\}', re.MULTILINE | re.DOTALL)
 EXTRACT_TAG = re.compile(r'(?:\s*)(\S+)(?:\s*)')
 LT_CONFIG = { 'CODE_DIR': 'code',
               'NOTEBOOK_DIR': 'notebooks'
