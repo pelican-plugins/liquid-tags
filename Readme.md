@@ -1,6 +1,8 @@
 # Liquid-style Tags
 *Author: Jake Vanderplas <jakevdp@cs.washington.edu>*
 
+[![Build Status](https://img.shields.io/github/workflow/status/pelican-plugins/liquid-tags/build)](https://github.com/pelican-plugins/liquid-tags/actions) [![PyPI Version](https://img.shields.io/pypi/v/pelican-liquid-tags)](https://pypi.org/project/pelican-liquid-tags/)
+
 This plugin allows liquid-style tags to be inserted into Markdown within
 Pelican documents via tags bounded by `{% ... %}`, a convention also used
 to extend Markdown in other publishing platforms such as Octopress.
@@ -18,6 +20,12 @@ First, in your pelicanconf.py file, add the plugins you want to use:
                'liquid_tags.include_code', 'liquid_tags.notebook']
 
 Following below is more information about these and other tags.
+
+## Installation
+
+This plugin can be installed via:
+
+    python -m pip install pelican-liquid-tags
 
 ## Image Tag
 To insert a sized and labeled image in your document, enable the
@@ -276,4 +284,12 @@ To test the plugin in multiple environments we use [tox](http://tox.readthedocs.
     cd path/to/liquid_tags
     tox
 
+## Contributing
+
+Contributions are welcome and much appreciated. Every little bit helps. You can contribute by improving the documentation, adding missing features, and fixing bugs. You can also help out by reviewing and commenting on [existing issues][].
+
+To start contributing to this plugin, review the [Contributing to Pelican][] documentation, beginning with the **Contributing Code** section.
+
+[existing issues]: https://github.com/pelican-plugins/liquid-tags/issues
+[Contributing to Pelican]: https://docs.getpelican.com/en/latest/contribute.html
 [IPython]: http://ipython.org/
