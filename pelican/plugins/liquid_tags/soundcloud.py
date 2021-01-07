@@ -30,8 +30,7 @@ import re
 
 # ---------------------------------------------------
 # This import allows soundcloud tag to be a Pelican plugin
-from .liquid_tags import register
-
+from .liquid_tags import register  # noqa
 from .mdx_liquid_tags import LiquidTags
 
 try:

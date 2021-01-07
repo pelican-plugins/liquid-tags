@@ -17,10 +17,12 @@ liquid-style tag.
 """
 from .mdx_liquid_tags import LiquidTags
 
-@LiquidTags.register('literal')
-def literal(preprocessor, tag, markup):
-    return '{%% %s %%}' % markup
 
-#----------------------------------------------------------------------
+@LiquidTags.register("literal")
+def literal(preprocessor, tag, markup):
+    return "{%% %s %%}" % markup
+
+
+# ----------------------------------------------------------------------
 # This import allows literal tag to be a Pelican plugin
-from .liquid_tags import register
+from .liquid_tags import register  # noqa

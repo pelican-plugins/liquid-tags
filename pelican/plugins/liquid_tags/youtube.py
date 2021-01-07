@@ -26,32 +26,33 @@ Output
 [1] https://gist.github.com/jamieowen/2063748
 """
 import re
+
 from .mdx_liquid_tags import LiquidTags
 
 SYNTAX = "{% youtube id [width height] %}"
 
-YOUTUBE = re.compile(r'([\S]+)(\s+([\d%]+)\s([\d%]+))?')
+YOUTUBE = re.compile(r"([\S]+)(\s+([\d%]+)\s([\d%]+))?")
 
 
-@LiquidTags.register('youtube')
+@LiquidTags.register("youtube")
 def youtube(preprocessor, tag, markup):
     width = 640
     height = 390
     youtube_id = None
 
-    config_thumb_only = preprocessor.configs.getConfig('YOUTUBE_THUMB_ONLY')
-    config_thumb_size = preprocessor.configs.getConfig('YOUTUBE_THUMB_SIZE')
+    config_thumb_only = preprocessor.configs.getConfig("YOUTUBE_THUMB_ONLY")
+    config_thumb_size = preprocessor.configs.getConfig("YOUTUBE_THUMB_SIZE")
 
     thumb_sizes = {
-        'maxres': [1280, 720],
-        'sd': [640, 480],
-        'hq': [480, 360],
-        'mq': [320, 180]
+        "maxres": [1280, 720],
+        "sd": [640, 480],
+        "hq": [480, 360],
+        "mq": [320, 180],
     }
 
     if config_thumb_only:
         if not config_thumb_size:
-            config_thumb_size = 'sd'
+            config_thumb_size = "sd"
 
         try:
             width = thumb_sizes[config_thumb_size][0]
@@ -68,8 +69,9 @@ def youtube(preprocessor, tag, markup):
 
     if youtube_id:
         if config_thumb_only:
-            thumb_url = 'https://img.youtube.com/vi/{youtube_id}'.format(
-                youtube_id=youtube_id)
+            thumb_url = "https://img.youtube.com/vi/{youtube_id}".format(
+                youtube_id=youtube_id
+            )
 
             youtube_out = """<a
                     href="https://www.youtube.com/watch?v={youtube_id}"
@@ -77,10 +79,13 @@ def youtube(preprocessor, tag, markup):
                 title="Click to view on YouTube">
                     <img width="{width}" height="{height}"
                         src="{thumb_url}/{size}default.jpg">
-                </a>""".format(width=width, height=height,
-                               youtube_id=youtube_id,
-                               size=config_thumb_size,
-                               thumb_url=thumb_url)
+                </a>""".format(
+                width=width,
+                height=height,
+                youtube_id=youtube_id,
+                size=config_thumb_size,
+                thumb_url=thumb_url,
+            )
         else:
             youtube_out = """
                 <span class="videobox">
@@ -90,11 +95,13 @@ def youtube(preprocessor, tag, markup):
                         mozallowfullscreen allowFullScreen>
                     </iframe>
                 </span>
-            """.format(width=width, height=height,
-                       youtube_id=youtube_id).strip()
+            """.format(
+                width=width, height=height, youtube_id=youtube_id
+            ).strip()
     else:
-        raise ValueError("Error processing input, "
-                         "expected syntax: {0}".format(SYNTAX))
+        raise ValueError(
+            "Error processing input, " "expected syntax: {0}".format(SYNTAX)
+        )
 
     return youtube_out
 
