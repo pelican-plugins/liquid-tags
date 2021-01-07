@@ -101,4 +101,4 @@ def youtube(preprocessor, tag, markup):
 
 # ---------------------------------------------------
 # This import allows youtube tag to be a Pelican plugin
-from liquid_tags import register  # noqa
+from .liquid_tags import register  # noqa

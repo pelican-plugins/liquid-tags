@@ -22,5 +22,5 @@ def literal(preprocessor, tag, markup):
     return '{%% %s %%}' % markup
 
 #----------------------------------------------------------------------
-# This import allows image tag to be a Pelican plugin
-from liquid_tags import register
+# This import allows literal tag to be a Pelican plugin
+from .liquid_tags import register

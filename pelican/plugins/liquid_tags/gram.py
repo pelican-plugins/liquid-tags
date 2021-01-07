@@ -99,5 +99,5 @@ def gram(preprocessor, tag, markup):
     return '<img src="{0}"{1}>'.format(gram_url,' '.join(' {0}="{1}"'.format(key,val) for (key,val) in attrs.items()))
 
 #----------------------------------------------------------------------
-# This import allows image tag to be a Pelican plugin
-from liquid_tags import register
+# This import allows gram tag to be a Pelican plugin
+from .liquid_tags import register

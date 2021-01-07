@@ -31,5 +31,5 @@ def generic(preprocessor, tag, markup):
         return 'generic: %s ' % markup
 
 #----------------------------------------------------------------------
-# This import allows image tag to be a Pelican plugin
-from liquid_tags import register
+# This import allows generic tag to be a Pelican plugin
+from .liquid_tags import register

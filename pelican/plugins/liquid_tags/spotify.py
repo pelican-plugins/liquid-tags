@@ -51,5 +51,5 @@ def spotify(preprocessor, tag, markup):
 
 
 # ---------------------------------------------------
-# This import allows image tag to be a Pelican plugin
-from liquid_tags import register  # noqa
+# This import allows spotify tag to be a Pelican plugin
+from .liquid_tags import register  # noqa

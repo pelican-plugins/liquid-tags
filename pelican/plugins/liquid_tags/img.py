@@ -63,4 +63,3 @@ def img(preprocessor, tag, markup):
 #----------------------------------------------------------------------
 # This import allows image tag to be a Pelican plugin
 from .liquid_tags import register
-

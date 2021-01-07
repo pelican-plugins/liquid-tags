@@ -173,5 +173,5 @@ def blockdiag_parser(preprocessor, tag, markup):
         raise ValueError('Error processing input. '
                          'Expected syntax: {0}'.format(SYNTAX))
 
-# This import allows image tag to be a Pelican plugin
+# This import allows diag tag to be a Pelican plugin
 from .liquid_tags import register

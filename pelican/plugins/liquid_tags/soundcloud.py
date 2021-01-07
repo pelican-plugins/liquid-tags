@@ -29,8 +29,8 @@ import json
 import re
 
 # ---------------------------------------------------
-# This import allows image tag to be a Pelican plugin
-from liquid_tags import register
+# This import allows soundcloud tag to be a Pelican plugin
+from .liquid_tags import register
 
 from .mdx_liquid_tags import LiquidTags
 

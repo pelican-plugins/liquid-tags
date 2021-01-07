@@ -123,5 +123,5 @@ def graphviz_parser(preprocessor, tag, markup):
                          'Expected syntax: {0}'.format(SYNTAX))
 
 #----------------------------------------------------------------------
-# This import allows image tag to be a Pelican plugin
+# This import allows graphviz tag to be a Pelican plugin
 from .liquid_tags import register

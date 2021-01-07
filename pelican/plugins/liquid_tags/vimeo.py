@@ -65,4 +65,4 @@ def vimeo(preprocessor, tag, markup):
 
 # ---------------------------------------------------
 # This import allows vimeo tag to be a Pelican plugin
-from liquid_tags import register  # noqa
+from .liquid_tags import register  # noqa

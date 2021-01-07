@@ -352,4 +352,4 @@ notebook.header_saved = False
 
 #----------------------------------------------------------------------
 # This import allows notebook to be a Pelican plugin
-from liquid_tags import register
+from .liquid_tags import register

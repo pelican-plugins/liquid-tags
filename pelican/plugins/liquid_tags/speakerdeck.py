@@ -53,4 +53,4 @@ data-ratio="{ratio}" src="//speakerdeck.com/assets/embed.js"></script>
 
 # ---------------------------------------------------
 # This import allows speakerdeck tag to be a Pelican plugin
-from liquid_tags import register  # noqa # isort:skip
+from .liquid_tags import register  # noqa # isort:skip
