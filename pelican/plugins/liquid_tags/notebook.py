@@ -309,6 +309,9 @@ def notebook(preprocessor, tag, markup):
         }
     )
 
+    """
+    # FIXME: doesn't use plugin as source of templates, see:
+    # https://github.com/pelican-plugins/liquid-tags/issues/3
     template_file = "basic"
     if IPYTHON_VERSION >= 3:
         if os.path.exists("pelicanhtml_3.tpl"):
@@ -319,6 +322,7 @@ def notebook(preprocessor, tag, markup):
     else:
         if os.path.exists("pelicanhtml_1.tpl"):
             template_file = "pelicanhtml_1"
+    """
 
     if IPYTHON_VERSION >= 2:
         subcell_kwarg = dict(preprocessors=[SubCell])
@@ -327,7 +331,7 @@ def notebook(preprocessor, tag, markup):
 
     exporter = HTMLExporter(
         config=c,
-        template_file=template_file,
+        # template_file=template_file,
         filters={"highlight2html": language_applied_highlighter},
         **subcell_kwarg
     )
