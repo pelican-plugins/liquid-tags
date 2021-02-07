@@ -9,46 +9,42 @@ diagram types like blockdiag, seqdiag, packetdiag etc. [1]
 
 Syntax
 ------
-{% blockdiag {
-        <diagramm type> {
-            <CODE>
-        }
+{% blockdiag
+    <diagramm type> {
+        <CODE>
     }
 %}
 
 Examples
 --------
-{% blockdiag {
-        blockdiag {
-          A -> B -> C;
-          B -> D;
+{% blockdiag
+    blockdiag {
+        A -> B -> C;
+        B -> D;
+    }
+%}
+
+
+{% blockdiag
+    actdiag {
+        A -> B -> C -> D -> E;
+
+        lane {
+        A; C; E;
+        }
+        lane {
+        B; D;
         }
     }
 %}
 
 
-{% blockdiag {
-        actdiag {
-          A -> B -> C -> D -> E;
-
-          lane {
-            A; C; E;
-          }
-          lane {
-            B; D;
-          }
-        }
-    }
-%}
-
-
-{% blockdiag {
-        packetdiag {
-           0-7: Source Port
-           8-15: Destination Port
-           16-31: Sequence Number
-           32-47: Acknowledgment Number
-        }
+{% blockdiag
+    packetdiag {
+        0-7: Source Port
+        8-15: Destination Port
+        16-31: Sequence Number
+        32-47: Acknowledgment Number
     }
 %}
 
@@ -87,7 +83,7 @@ def get_diag(code, command):
         fd, diag_name = tempfile.mkstemp(dir=tmpdir)
 
         f = os.fdopen(fd, "w")
-        f.write(code.encode("utf-8"))
+        f.write(code)
         f.close()
 
         format = _draw_mode.lower()
@@ -172,11 +168,12 @@ def blockdiag_parser(preprocessor, tag, markup):
         output = diag(code, diagram)
 
         if output:
+            base64_data = base64.b64encode(output).decode("UTF-8")
             # Return Base64 encoded image
             return (
-                '<span class="blockdiag" style="align: center;"><img src="data:image/png;base64,%s"></span>'
-                % base64.b64encode(output)
-            )
+                '<span class="blockdiag" style="align: center;">'
+                '<img src="data:image/png;base64,%s"></span>'
+            ) % base64_data
     else:
         raise ValueError(
             "Error processing input. " "Expected syntax: {0}".format(SYNTAX)
