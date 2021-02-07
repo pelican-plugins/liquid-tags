@@ -1,6 +1,11 @@
+import importlib
+import logging
+
 from pelican import signals
 
 from .mdx_liquid_tags import LT_CONFIG, LT_HELP, LiquidTags
+
+logger = logging.getLogger(__name__)
 
 
 def addLiquidTags(gen):
@@ -24,6 +29,13 @@ def addLiquidTags(gen):
         gen.settings["MARKDOWN"].setdefault("extensions", []).append(
             LiquidTags(configs)
         )
+
+    tags_to_import = gen.settings.get("LIQUID_TAGS", [])
+    for tag in tags_to_import:
+        try:
+            importlib.import_module(f".{tag}", "pelican.plugins.liquid_tags")
+        except ModuleNotFoundError:
+            logger.warn(f"Could not load liquid_tag '{tag}'")
 
 
 def register():
