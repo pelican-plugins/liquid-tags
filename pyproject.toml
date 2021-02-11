@@ -1,11 +1,11 @@
 [tool.poetry]
 name = "pelican-liquid-tags"
 version = "1.0.0"
-description = "This plugin allows liquid-style tags to be inserted into Markdown within Pelican documents via tags bounded by `{% ... %}`"
+description = "Pelican plugin that allows liquid-style tags to be inserted into Markdown documents via tags bounded by `{% ... %}`"
 authors = ["Jake Vanderplas <jakevdp@cs.washington.edu>"]
 license = "AGPL-3.0"
-readme = "Readme.md"
-keywords = ["pelican", "plugin"]
+readme = "README.md"
+keywords = ["pelican", "plugin", "markdown"]
 repository = "https://github.com/pelican-plugins/liquid-tags"
 documentation = "https://docs.getpelican.com"
 packages = [
@@ -37,7 +37,7 @@ nbconvert = "^6.0.7"
 [tool.poetry.dev-dependencies]
 black = {version = "^19.10b0", allow-prereleases = true}
 flake8 = "^3.8"
-flake8-black = "^0.1.0"
+flake8-black = "^0.2"
 invoke = "^1.3"
 isort = "^5.4"
 livereload = "^2.6"
@@ -52,7 +52,7 @@ Werkzeug = "^1.0"
 markdown = ["markdown"]
 
 [tool.autopub]
-project-name = "liquid tags"
+project-name = "Liquid Tags"
 git-username = "botpub"
 git-email = "botpub@autopub.rocks"
 
@@ -68,5 +68,5 @@ multi_line_output = 3
 force_sort_within_sections = true
 
 [build-system]
-requires = ["poetry>=1.0"]
-build-backend = "poetry.masonry.api"
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
