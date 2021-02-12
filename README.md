@@ -1,4 +1,4 @@
-# Liquid-style Tags
+# Liquid Tags
 
 [![Build Status](https://img.shields.io/github/workflow/status/pelican-plugins/liquid-tags/build)](https://github.com/pelican-plugins/liquid-tags/actions)
 [![PyPI Version](https://img.shields.io/pypi/v/pelican-liquid-tags)](https://pypi.org/project/pelican-liquid-tags/)
@@ -10,14 +10,17 @@ to extend Markdown in other publishing platforms such as Octopress.
 
 This set of extensions does not actually interface with Liquid, but allows
 users to define their own Liquid-style tags which will be inserted into
-the Markdown preprocessor stream. There are several built-in tags, which
-can be added as follows.
+the Markdown pre-processor stream. There are several built-in tags, which
+can be added as follows below.
 
 ## Installation
 
 This plugin can be installed via:
 
     python -m pip install pelican-liquid-tags
+
+For more detailed plugin installation instructions, please refer to the
+[Pelican Plugin Documentation](https://docs.getpelican.com/en/latest/plugins.html).
 
 ## Configuration
 
