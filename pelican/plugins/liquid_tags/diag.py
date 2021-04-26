@@ -72,7 +72,7 @@ _publish_mode = "PNG"
 
 
 def get_diag(code, command):
-    """ Generate diagramm and return data """
+    """Generate diagramm and return data"""
     import shutil
     import tempfile
 
@@ -157,7 +157,7 @@ def diag(code, command):
 
 @LiquidTags.register("blockdiag")
 def blockdiag_parser(preprocessor, tag, markup):
-    """ Blockdiag parser """
+    """Blockdiag parser"""
     m = DOT_BLOCK_RE.search(markup)
     if m:
         # Get diagram type and code

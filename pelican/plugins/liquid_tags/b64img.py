@@ -48,7 +48,7 @@ ReTitleAlt = re.compile(
 
 
 def _get_file(src):
-    """ Return content from local or remote file. """
+    """Return content from local or remote file."""
     try:
         if "://" in src or src[0:2] == "//":  # Most likely this is remote file
             response = urllib2.urlopen(src)
@@ -61,7 +61,7 @@ def _get_file(src):
 
 
 def base64image(src):
-    """ Generate base64 encoded image from srouce file. """
+    """Generate base64 encoded image from srouce file."""
     return base64.b64encode(_get_file(src))
 
 

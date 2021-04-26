@@ -41,7 +41,7 @@ PARSE_SYNTAX = re.compile(
 
 
 def get_info(photo_id, api_key):
-    """ Get photo informations from flickr api. """
+    """Get photo informations from flickr api."""
     query = urlencode(
         {
             "method": "flickr.photos.getInfo",
@@ -62,7 +62,7 @@ def get_info(photo_id, api_key):
 
 
 def source_url(farm, server, id, secret, size):
-    """ Url for direct jpg use. """
+    """Url for direct jpg use."""
     if size == "small":
         img_size = "n"
     elif size == "medium":
@@ -76,7 +76,7 @@ def source_url(farm, server, id, secret, size):
 
 
 def generate_html(attrs, api_key):
-    """ Returns html code. """
+    """Returns html code."""
     # getting flickr api data
     flickr_data = get_info(attrs["photo_id"], api_key)
 

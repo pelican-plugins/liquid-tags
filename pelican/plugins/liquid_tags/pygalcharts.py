@@ -99,8 +99,7 @@ DOT_BLOCK_RE = re.compile(r"^\s*\{\s*(?P<code>.*\})\s*\}$", re.MULTILINE | re.DO
 
 
 def run_pygal(data, options=[], format="svg"):
-    """ Runs pygal programs and returns image data
-    """
+    """Runs pygal programs and returns image data"""
     import pygal
 
     chart_type = data.get("type", "").lower()
@@ -151,7 +150,7 @@ def run_pygal(data, options=[], format="svg"):
 
 @LiquidTags.register("pygal")
 def pygal_parser(preprocessor, tag, markup):
-    """ Simple pygal parser """
+    """Simple pygal parser"""
     # Find JSON payload
     data = loads(markup)
     if tag == "pygal" and data is not None:

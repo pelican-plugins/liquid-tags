@@ -131,8 +131,10 @@ def include_code(preprocessor, tag, markup):  # NOQA: C901
 
         if not hide_filename:
             filename = "%s" % os.path.basename(src)
-            open_tag += '<span class="liquid-tags-code-filename">{filename}</span>'.format(
-                filename=filename.strip()
+            open_tag += (
+                '<span class="liquid-tags-code-filename">{filename}</span>'.format(
+                    filename=filename.strip()
+                )
             )
 
         if lines:

@@ -62,9 +62,9 @@ DOT_BLOCK_RE = re.compile(
 
 
 def run_graphviz(program, code, options=[], format="png"):
-    """ Runs graphviz programs and returns image data
+    """Runs graphviz programs and returns image data
 
-        Copied from https://github.com/tkf/ipython-hierarchymagic/blob/master/hierarchymagic.py
+    Copied from https://github.com/tkf/ipython-hierarchymagic/blob/master/hierarchymagic.py
     """
     import os
     from subprocess import PIPE, Popen
@@ -111,7 +111,7 @@ def run_graphviz(program, code, options=[], format="png"):
 
 @LiquidTags.register("graphviz")
 def graphviz_parser(preprocessor, tag, markup):
-    """ Simple Graphviz parser """
+    """Simple Graphviz parser"""
 
     # Parse the markup string
     m = DOT_BLOCK_RE.search(markup)
