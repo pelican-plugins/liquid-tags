@@ -7,9 +7,8 @@ from shutil import rmtree
 from tempfile import mkdtemp
 import unittest
 
-from pelican.settings import read_settings
-
 from pelican import Pelican
+from pelican.settings import read_settings
 
 from .notebook import IPYTHON_VERSION
 

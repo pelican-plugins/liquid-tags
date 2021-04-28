@@ -7,9 +7,8 @@ from shutil import rmtree
 from tempfile import mkdtemp
 import unittest
 
-from pelican.settings import read_settings
-
 from pelican import Pelican
+from pelican.settings import read_settings
 
 PLUGIN_DIR = os.path.dirname(__file__)
 TEST_DATA_DIR = os.path.join(PLUGIN_DIR, "test_data")

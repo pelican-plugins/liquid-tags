@@ -4,8 +4,9 @@ import unittest
 if "nosetests" in sys.argv[0]:
     raise unittest.SkipTest("Those tests are pytest-compatible only")
 
-from pelican.tests.support import unittest
 import pytest
+
+from pelican.tests.support import unittest
 
 from . import notebook
 
