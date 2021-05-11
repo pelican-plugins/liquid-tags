@@ -62,9 +62,9 @@ DOT_BLOCK_RE = re.compile(
 
 
 def run_graphviz(program, code, options=[], format="png"):
-    """ Runs graphviz programs and returns image data
+    """Runs graphviz programs and returns image data
 
-        Copied from https://github.com/tkf/ipython-hierarchymagic/blob/master/hierarchymagic.py
+    Copied from https://github.com/tkf/ipython-hierarchymagic/blob/master/hierarchymagic.py
     """
     import os
     from subprocess import PIPE, Popen
@@ -86,11 +86,11 @@ def run_graphviz(program, code, options=[], format="png"):
         # Graphviz may close standard input when an error occurs,
         # resulting in a broken pipe on communicate()
         stdout, stderr = p.communicate(code.encode("utf-8"))
-    except (OSError, IOError) as err:
+    except OSError as err:
         if err.errno != EPIPE:
             raise
         wentwrong = True
-    except IOError as err:
+    except OSError as err:
         if err.errno != EINVAL:
             raise
         wentwrong = True
@@ -103,7 +103,7 @@ def run_graphviz(program, code, options=[], format="png"):
 
     if p.returncode != 0:
         raise RuntimeError(
-            "dot exited with error:\n[stderr]\n{0}".format(stderr.decode("utf-8"))
+            "dot exited with error:\n[stderr]\n{}".format(stderr.decode("utf-8"))
         )
 
     return stdout
@@ -111,7 +111,7 @@ def run_graphviz(program, code, options=[], format="png"):
 
 @LiquidTags.register("graphviz")
 def graphviz_parser(preprocessor, tag, markup):
-    """ Simple Graphviz parser """
+    """Simple Graphviz parser"""
 
     # Parse the markup string
     m = DOT_BLOCK_RE.search(markup)
@@ -131,7 +131,7 @@ def graphviz_parser(preprocessor, tag, markup):
         )
     else:
         raise ValueError(
-            "Error processing input. " "Expected syntax: {0}".format(SYNTAX)
+            "Error processing input. " "Expected syntax: {}".format(SYNTAX)
         )
 
 

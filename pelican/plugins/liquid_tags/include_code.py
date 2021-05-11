@@ -70,7 +70,7 @@ FORMAT = re.compile(
 )
 
 
-@LiquidTags.register("include_code")
+@LiquidTags.register("include_code")  # NOQA: C901
 def include_code(preprocessor, tag, markup):  # NOQA: C901
 
     title = None
@@ -93,14 +93,14 @@ def include_code(preprocessor, tag, markup):  # NOQA: C901
 
     if not src:
         raise ValueError(
-            "Error processing input, " "expected syntax: {0}".format(SYNTAX)
+            "Error processing input, " "expected syntax: {}".format(SYNTAX)
         )
 
     code_dir = preprocessor.configs.getConfig("CODE_DIR")
     code_path = os.path.join("content", code_dir, src)
 
     if not os.path.exists(code_path):
-        raise ValueError("File {0} could not be found".format(code_path))
+        raise ValueError(f"File {code_path} could not be found")
 
     if not codec:
         codec = "utf-8"
@@ -131,8 +131,10 @@ def include_code(preprocessor, tag, markup):  # NOQA: C901
 
         if not hide_filename:
             filename = "%s" % os.path.basename(src)
-            open_tag += '<span class="liquid-tags-code-filename">{filename}</span>'.format(
-                filename=filename.strip()
+            open_tag += (
+                '<span class="liquid-tags-code-filename">{filename}</span>'.format(
+                    filename=filename.strip()
+                )
             )
 
         if lines:
@@ -142,9 +144,9 @@ def include_code(preprocessor, tag, markup):  # NOQA: C901
             )
 
         if not hide_link:
-            url = "/{0}/{1}".format(code_dir, src)
+            url = f"/{code_dir}/{src}"
             url = re.sub("/+", "/", url)
-            open_tag += "<a href='{url}'>download</a>".format(url=url)
+            open_tag += f"<a href='{url}'>download</a>"
 
         open_tag += "</figcaption>"
 

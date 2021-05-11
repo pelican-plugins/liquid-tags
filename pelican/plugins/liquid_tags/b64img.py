@@ -30,8 +30,6 @@ try:
 except ImportError:
     import urllib2
 
-import six
-
 from .mdx_liquid_tags import LiquidTags
 
 SYNTAX = '{% b64img [class name(s)] [http[s]:/]/path/to/image [width [height]] [title text | "title text" ["alt text"]] %}'
@@ -48,7 +46,7 @@ ReTitleAlt = re.compile(
 
 
 def _get_file(src):
-    """ Return content from local or remote file. """
+    """Return content from local or remote file."""
     try:
         if "://" in src or src[0:2] == "//":  # Most likely this is remote file
             response = urllib2.urlopen(src)
@@ -57,11 +55,11 @@ def _get_file(src):
             with open(src, "rb") as fh:
                 return fh.read()
     except Exception as e:
-        raise RuntimeError("Error generating base64image: {}".format(e))
+        raise RuntimeError(f"Error generating base64image: {e}")
 
 
 def base64image(src):
-    """ Generate base64 encoded image from srouce file. """
+    """Generate base64 encoded image from srouce file."""
     return base64.b64encode(_get_file(src))
 
 
@@ -72,16 +70,10 @@ def b64img(preprocessor, tag, markup):
     # Parse the markup string
     match = ReImg.search(markup)
     if match:
-        attrs = dict(
-            [
-                (key, val.strip())
-                for (key, val) in six.iteritems(match.groupdict())
-                if val
-            ]
-        )
+        attrs = {key: val.strip() for (key, val) in match.groupdict().items() if val}
     else:
         raise ValueError(
-            "Error processing input. " "Expected syntax: {0}".format(SYNTAX)
+            "Error processing input. " "Expected syntax: {}".format(SYNTAX)
         )
 
     # Check if alt text is present -- if so, split it from title
@@ -95,9 +87,7 @@ def b64img(preprocessor, tag, markup):
     attrs["src"] = "data:;base64,{}".format(base64image(attrs["src"]))
 
     # Return the formatted text
-    return "<img {0}>".format(
-        " ".join('{0}="{1}"'.format(key, val) for (key, val) in six.iteritems(attrs))
-    )
+    return "<img {}>".format(" ".join(f'{key}="{val}"' for (key, val) in attrs.items()))
 
 
 # ----------------------------------------------------------------------

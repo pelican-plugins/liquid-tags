@@ -58,7 +58,6 @@ Output
 """
 
 import base64
-import io
 import os
 import re
 
@@ -72,11 +71,11 @@ _publish_mode = "PNG"
 
 
 def get_diag(code, command):
-    """ Generate diagramm and return data """
+    """Generate diagramm and return data"""
     import shutil
     import tempfile
 
-    code = code + u"\n"
+    code = code + "\n"
 
     try:
         tmpdir = tempfile.mkdtemp()
@@ -100,7 +99,7 @@ def get_diag(code, command):
         # Read image data from file
         file_name = diag_name + "." + _publish_mode.lower()
 
-        with io.open(file_name, "rb") as f:
+        with open(file_name, "rb") as f:
             data = f.read()
             f.close()
 
@@ -157,7 +156,7 @@ def diag(code, command):
 
 @LiquidTags.register("blockdiag")
 def blockdiag_parser(preprocessor, tag, markup):
-    """ Blockdiag parser """
+    """Blockdiag parser"""
     m = DOT_BLOCK_RE.search(markup)
     if m:
         # Get diagram type and code
@@ -176,7 +175,7 @@ def blockdiag_parser(preprocessor, tag, markup):
             ) % base64_data
     else:
         raise ValueError(
-            "Error processing input. " "Expected syntax: {0}".format(SYNTAX)
+            "Error processing input. " "Expected syntax: {}".format(SYNTAX)
         )
 
 

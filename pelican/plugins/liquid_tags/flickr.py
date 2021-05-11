@@ -32,16 +32,14 @@ from .mdx_liquid_tags import LiquidTags
 
 SYNTAX = """{% flickr image_id [small|medium|large] ["alt text"|'alt text'] %}"""
 PARSE_SYNTAX = re.compile(
-    (
-        r"""(?P<photo_id>\S+)"""
-        r"""(?:\s+(?P<size>large|medium|small))?"""
-        r"""(?:\s+(['"]{0,1})(?P<alt>.+)(\3))?"""
-    )
+    r"""(?P<photo_id>\S+)"""
+    r"""(?:\s+(?P<size>large|medium|small))?"""
+    r"""(?:\s+(['"]{0,1})(?P<alt>.+)(\3))?"""
 )
 
 
 def get_info(photo_id, api_key):
-    """ Get photo informations from flickr api. """
+    """Get photo informations from flickr api."""
     query = urlencode(
         {
             "method": "flickr.photos.getInfo",
@@ -62,7 +60,7 @@ def get_info(photo_id, api_key):
 
 
 def source_url(farm, server, id, secret, size):
-    """ Url for direct jpg use. """
+    """Url for direct jpg use."""
     if size == "small":
         img_size = "n"
     elif size == "medium":
@@ -76,7 +74,7 @@ def source_url(farm, server, id, secret, size):
 
 
 def generate_html(attrs, api_key):
-    """ Returns html code. """
+    """Returns html code."""
     # getting flickr api data
     flickr_data = get_info(attrs["photo_id"], api_key)
 
@@ -112,13 +110,9 @@ def flickr(preprocessor, tag, markup):
 
     match = PARSE_SYNTAX.search(markup)
     if match:
-        attrs = dict(
-            [
-                (key, value.strip())
-                for (key, value) in match.groupdict().items()
-                if value
-            ]
-        )
+        attrs = {
+            key: value.strip() for (key, value) in match.groupdict().items() if value
+        }
     else:
         raise ValueError(
             "Error processing input. " "Expected syntax: {}".format(SYNTAX)
