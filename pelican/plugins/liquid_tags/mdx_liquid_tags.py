@@ -24,6 +24,8 @@ LT_CONFIG = {
     "FLICKR_API_KEY": "flickr",
     "GIPHY_API_KEY": "giphy",
     "IMG_DEFAULT_LOADING": "eager",
+    "YOUTUBE_THUMB_ONLY": False,
+    "YOUTUBE_THUMB_SIZE": "",
 }
 LT_HELP = {
     "CODE_DIR": "Code directory for include_code subplugin",
@@ -31,6 +33,8 @@ LT_HELP = {
     "FLICKR_API_KEY": "Flickr key for accessing the API",
     "GIPHY_API_KEY": "Giphy key for accessing the API",
     "IMG_DEFAULT_LOADING": "The default loading method of images (eager or lazy)",
+    "YOUTUBE_THUMB_ONLY": "Embed a linked thumbnail instead 1MB of JS code",
+    "YOUTUBE_THUMB_SIZE": "Thumbnail dimensions maxres/sd (default)/hq/mq",
 }
 
 
