@@ -49,7 +49,14 @@ appropriate Pelican setting:
 To insert a sized and labeled image in your document, enable the
 `img` tag and use the following:
 
-    {% img [class name(s)] path/to/image [width [height]] [title text | "title text" ["alt text"]] %}
+    {% img [class name(s)] path/to/image [lazy | eager] [width [height]] [title text | "title text" ["alt text"]] %}
+
+The configuration variable `IMG_DEFAULT_LOADING` can change the default beahavior
+of the plugin. `lazy` setting takes precendence over the default `eager`.
+If `lazy` is set, all the images will receive the attribute. This is not the case
+with `eager` because it's the default behavior of browsers when faced with an image.
+Explicit parameters specified in liquid-tags `img` will always take precedence
+and will always be translated into attributes.
 
 ### Base64 Image (Inline Image) Tag
 
@@ -58,7 +65,7 @@ To insert a sized and labeled image in your document, enable the
 To use it:
 
 1. Enable `b64img`
-1. Insert a tag as follows: `{% b64img [class name(s)] path/to/image [width [height]] [title text | "title text" ["alt text"]] %}`
+2. Insert a tag as follows: `{% b64img [class name(s)] path/to/image [width [height]] [title text | "title text" ["alt text"]] %}`
 
 Images are encoded at generation time, so you can use any local path (just be sure that the image will remain in the same location for subsequent site generations).
 
