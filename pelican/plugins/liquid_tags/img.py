@@ -6,11 +6,11 @@ based on the octopress image tag [1]_
 
 Syntax
 ------
-{% img [class name(s)] [http[s]:/]/path/to/image [width [height]] [title text | "title text" ["alt text"]] %}
+{% img [class name(s)] [http[s]:/]/path/to/image [lazy | eager] [width [height]] [title text | "title text" ["alt text"]] %}
 
 Examples
 --------
-{% img /images/ninja.png Ninja Attack! %}
+{% img /images/ninja.png %}
 {% img left half http://site.com/images/ninja.png Ninja Attack! %}
 {% img left half http://site.com/images/ninja.png 150 150 "Ninja Attack!" "Ninja in attack posture" %}
 
@@ -28,11 +28,11 @@ import six
 
 from .mdx_liquid_tags import LiquidTags
 
-SYNTAX = '{% img [class name(s)] [http[s]:/]/path/to/image [width [height]] [title text | "title text" ["alt text"]] %}'
+SYNTAX = '{% img [class name(s)] [http[s]:/]/path/to/image [lazy | eager] [width [height]] [title text | "title text" ["alt text"]] %}'
 
 # Regular expression to match the entire syntax
 ReImg = re.compile(
-    r"""(?P<class>\S.*\s+)?(?P<src>(?:https?:\/\/|\/|\S+\/)\S+)(?:\s+(?P<width>\d+))?(?:\s+(?P<height>\d+))?(?P<title>\s+.+)?"""
+    r"""(?P<class>\S.*\s+)?(?P<src>(?:https?:\/\/|\/|\S+\/)\S+)(?:\s+(?P<loading>lazy|eager))?(?:\s+(?P<width>\d+))?(?:\s+(?P<height>\d+))?(?P<title>\s+.+)?"""
 )
 
 # Regular expression to split the title and alt text
@@ -59,6 +59,12 @@ def img(preprocessor, tag, markup):
         raise ValueError(
             "Error processing input. " "Expected syntax: {0}".format(SYNTAX)
         )
+
+    # If loading setting is modified but not at the image scale
+    # If so, apply the global setting
+    loading = preprocessor.configs.getConfig("IMG_DEFAULT_LOADING")
+    if "loading" not in attrs and loading != "eager":
+        attrs["loading"] = loading
 
     # Check if alt text is present -- if so, split it from title
     if "title" in attrs:
