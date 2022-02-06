@@ -60,11 +60,7 @@ def img(preprocessor, tag, markup):
     # Parse the markup string
     match = ReImg.search(markup)
     if match:
-        attrs = {
-            key: val.strip()
-            for key, val in match.groupdict().items()
-            if val
-        }
+        attrs = {key: val.strip() for key, val in match.groupdict().items() if val}
     else:
         raise ValueError(
             "Error processing input. " "Expected syntax: {0}".format(SYNTAX)
