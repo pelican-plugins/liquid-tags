@@ -1,8 +1,29 @@
 """
 Youtube Tag
----------
+-----------
 This implements a Liquid-style youtube tag for Pelican,
 based on the jekyll / octopress youtube tag [1]_
+
+Configuration
+-------------
+
+- Embedding Thumbnail Only
+
+  If you do not want to add 1+ megabyte of JS code to your page, you can embed a
+  linked thumbnail instead. To do so, set a `YOUTUBE_THUMB_ONLY` variable in your
+  settings file. The `YOUTUBE_THUMB_SIZE` variable controls thumbnail dimensions,
+  with four sizes available:
+
+  ======  ======  ======
+  name    xres    yres
+  ======  ======  ======
+  maxres  1280    720
+  sd      640     480
+  hq      480     360
+  mq      320     180
+  ======  ======  ======
+
+  Embedded thumbnails have CSS class `youtube_video`, which can be used to add a Play button.
 
 Syntax
 ------
