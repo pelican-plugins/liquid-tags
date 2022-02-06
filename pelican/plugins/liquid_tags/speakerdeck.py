@@ -47,7 +47,7 @@ data-ratio="{ratio}" src="//speakerdeck.com/assets/embed.js"></script>
             id=id, ratio=ratio
         )
     else:
-        raise ValueError("Error processing input, expected syntax: {0}".format(SYNTAX))
+        raise ValueError(f"Error processing input, expected syntax: {SYNTAX}")
     return speakerdeck_out
 
 

@@ -52,7 +52,7 @@ def create_html(markup):
             base, ext = os.path.splitext(audio_file)
 
             if ext not in AUDIO_TYPEDICT:
-                raise ValueError("Unrecognized audio extension: " "{0}".format(ext))
+                raise ValueError("Unrecognized audio extension: " "{}".format(ext))
 
             # add audio source
             audio_out += '<source src="{}" type="{}">'.format(
@@ -65,7 +65,7 @@ def create_html(markup):
 
     else:
         raise ValueError(
-            "Error processing input, " "expected syntax: {0}".format(SYNTAX)
+            "Error processing input, " "expected syntax: {}".format(SYNTAX)
         )
 
     return audio_out

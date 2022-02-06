@@ -49,7 +49,6 @@ still be some conflicts.
 """
 from copy import deepcopy
 from functools import partial
-from io import open
 import os
 import re
 import warnings
@@ -219,7 +218,7 @@ class SliceIndex(Integer):
         if value is None:
             return value
         else:
-            return super(SliceIndex, self).validate(obj, value)
+            return super().validate(obj, value)
 
 
 class SubCell(Preprocessor):
@@ -275,7 +274,7 @@ def notebook(preprocessor, tag, markup):
         language = argdict["language"]
     else:
         raise ValueError(
-            "Error processing input, " "expected syntax: {0}".format(SYNTAX)
+            "Error processing input, " "expected syntax: {}".format(SYNTAX)
         )
 
     if start:
@@ -296,7 +295,7 @@ def notebook(preprocessor, tag, markup):
     )
 
     if not os.path.exists(nb_path):
-        raise ValueError("File {0} could not be found".format(nb_path))
+        raise ValueError(f"File {nb_path} could not be found")
 
     # Create the custom notebook converter
     c = Config(

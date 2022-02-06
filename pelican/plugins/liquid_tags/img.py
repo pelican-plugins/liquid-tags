@@ -63,7 +63,7 @@ def img(preprocessor, tag, markup):
         attrs = {key: val.strip() for key, val in match.groupdict().items() if val}
     else:
         raise ValueError(
-            "Error processing input. " "Expected syntax: {0}".format(SYNTAX)
+            "Error processing input. " "Expected syntax: {}".format(SYNTAX)
         )
 
     # If loading setting is modified but not at the image scale
@@ -81,8 +81,8 @@ def img(preprocessor, tag, markup):
             attrs["alt"] = attrs["title"]
 
     # Return the formatted text
-    return "<img {0}>".format(
-        " ".join('{0}="{1}"'.format(*item) for item in attrs.items())
+    return "<img {}>".format(
+        " ".join('{}="{}"'.format(*item) for item in attrs.items())
     )
 
 

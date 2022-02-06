@@ -31,68 +31,68 @@ class TestNotebookTagRegex(unittest.TestCase):
         return None
 
     def test_basic_notebook_tag(self):
-        markup = u"path/to/thing.ipynb"
+        markup = "path/to/thing.ipynb"
         src, start, end, language = self.get_argdict(markup)
 
-        self.assertEqual(src, u"path/to/thing.ipynb")
+        self.assertEqual(src, "path/to/thing.ipynb")
         self.assertIsNone(start)
         self.assertIsNone(end)
         self.assertIsNone(language)
 
     def test_basic_notebook_tag_insensitive_to_whitespace(self):
-        markup = u"   path/to/thing.ipynb "
+        markup = "   path/to/thing.ipynb "
         src, start, end, language = self.get_argdict(markup)
 
-        self.assertEqual(src, u"path/to/thing.ipynb")
+        self.assertEqual(src, "path/to/thing.ipynb")
         self.assertIsNone(start)
         self.assertIsNone(end)
         self.assertIsNone(language)
 
     def test_notebook_tag_with_cells(self):
-        markup = u"path/to/thing.ipynb cells[1:5]"
+        markup = "path/to/thing.ipynb cells[1:5]"
         src, start, end, language = self.get_argdict(markup)
 
-        self.assertEqual(src, u"path/to/thing.ipynb")
-        self.assertEqual(start, u"1")
-        self.assertEqual(end, u"5")
+        self.assertEqual(src, "path/to/thing.ipynb")
+        self.assertEqual(start, "1")
+        self.assertEqual(end, "5")
         self.assertIsNone(language)
 
     def test_notebook_tag_with_alphanumeric_language(self):
-        markup = u"path/to/thing.ipynb language[python3]"
+        markup = "path/to/thing.ipynb language[python3]"
         src, start, end, language = self.get_argdict(markup)
 
-        self.assertEqual(src, u"path/to/thing.ipynb")
+        self.assertEqual(src, "path/to/thing.ipynb")
         self.assertIsNone(start)
         self.assertIsNone(end)
-        self.assertEqual(language, u"python3")
+        self.assertEqual(language, "python3")
 
     def test_notebook_tag_with_symbol_in_name_language(self):
-        for short_name in [u"c++", u"cpp-objdump", u"c++-objdumb", u"cxx-objdump"]:
-            markup = u"path/to/thing.ipynb language[{}]".format(short_name)
+        for short_name in ["c++", "cpp-objdump", "c++-objdumb", "cxx-objdump"]:
+            markup = f"path/to/thing.ipynb language[{short_name}]"
             src, start, end, language = self.get_argdict(markup)
 
-            self.assertEqual(src, u"path/to/thing.ipynb")
+            self.assertEqual(src, "path/to/thing.ipynb")
             self.assertIsNone(start)
             self.assertIsNone(end)
             self.assertEqual(language, short_name)
 
     def test_notebook_tag_with_language_and_cells(self):
-        markup = u"path/to/thing.ipynb cells[1:5] language[julia]"
+        markup = "path/to/thing.ipynb cells[1:5] language[julia]"
         src, start, end, language = self.get_argdict(markup)
 
-        self.assertEqual(src, u"path/to/thing.ipynb")
-        self.assertEqual(start, u"1")
-        self.assertEqual(end, u"5")
-        self.assertEqual(language, u"julia")
+        self.assertEqual(src, "path/to/thing.ipynb")
+        self.assertEqual(start, "1")
+        self.assertEqual(end, "5")
+        self.assertEqual(language, "julia")
 
     def test_notebook_tag_with_language_and_cells_and_weird_spaces(self):
-        markup = u"   path/to/thing.ipynb   cells[1:5]  language[julia]       "
+        markup = "   path/to/thing.ipynb   cells[1:5]  language[julia]       "
         src, start, end, language = self.get_argdict(markup)
 
-        self.assertEqual(src, u"path/to/thing.ipynb")
-        self.assertEqual(start, u"1")
-        self.assertEqual(end, u"5")
-        self.assertEqual(language, u"julia")
+        self.assertEqual(src, "path/to/thing.ipynb")
+        self.assertEqual(start, "1")
+        self.assertEqual(end, "5")
+        self.assertEqual(language, "julia")
 
 
 if __name__ == "__main__":

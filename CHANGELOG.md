@@ -10,4 +10,3 @@ Restore support for Python 3.6
 ------------------
 
 Initial release as namespace plugin.
-
