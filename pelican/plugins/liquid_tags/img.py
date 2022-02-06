@@ -24,8 +24,6 @@ Output
 """
 import re
 
-import six
-
 from .mdx_liquid_tags import LiquidTags
 
 SYNTAX = '{% img [class name(s)] [http[s]:/]/path/to/image [lazy | eager] [width [height]] [title text | "title text" ["alt text"]] %}'
@@ -48,13 +46,11 @@ def img(preprocessor, tag, markup):
     # Parse the markup string
     match = ReImg.search(markup)
     if match:
-        attrs = dict(
-            [
-                (key, val.strip())
-                for (key, val) in six.iteritems(match.groupdict())
-                if val
-            ]
-        )
+        attrs = {
+            key: val.strip()
+            for key, val in match.groupdict().items()
+            if val
+        }
     else:
         raise ValueError(
             "Error processing input. " "Expected syntax: {0}".format(SYNTAX)
@@ -76,7 +72,7 @@ def img(preprocessor, tag, markup):
 
     # Return the formatted text
     return "<img {0}>".format(
-        " ".join('{0}="{1}"'.format(key, val) for (key, val) in six.iteritems(attrs))
+        " ".join('{0}="{1}"'.format(*item) for item in attrs.items())
     )
 
 
