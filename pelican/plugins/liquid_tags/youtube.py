@@ -97,7 +97,8 @@ def youtube(preprocessor, tag, markup):
             youtube_out = """<a
                     href="https://www.youtube.com/watch?v={youtube_id}"
                 class="youtube_video" alt="YouTube Video"
-                title="Click to view on YouTube">
+                title="Click to view on YouTube"
+                target="_blank" rel="noopener noreferrer">
                     <img width="{width}" height="{height}"
                         src="{thumb_url}/{size}default.jpg">
                 </a>""".format(
