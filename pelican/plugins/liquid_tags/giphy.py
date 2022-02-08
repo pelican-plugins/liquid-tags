@@ -65,9 +65,7 @@ def main(api_key, markup):
 
     if match:
         attrs = {
-                key: value.strip()
-                for (key, value) in match.groupdict().items()
-                if value
+            key: value.strip() for (key, value) in match.groupdict().items() if value
         }
 
     else:

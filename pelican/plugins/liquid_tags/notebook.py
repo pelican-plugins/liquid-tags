@@ -332,7 +332,7 @@ def notebook(preprocessor, tag, markup):
         config=c,
         # template_file=template_file,
         filters={"highlight2html": language_applied_highlighter},
-        **subcell_kwarg
+        **subcell_kwarg,
     )
 
     # read and parse the notebook
