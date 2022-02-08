@@ -35,7 +35,7 @@ GIPHY = re.compile(r"""(?P<gif_id>[\S+]+)(?:\s+(['"]{0,1})(?P<alt>.+)(\\2))?""")
 
 def get_gif(api_key, gif_id):
     """Returns dict with gif informations from the API."""
-    url = "http://api.giphy.com/v1/gifs/{}?api_key={}".format(gif_id, api_key)
+    url = f"http://api.giphy.com/v1/gifs/{gif_id}?api_key={api_key}"
     r = urlopen(url)
 
     return json.loads(r.read().decode("utf-8"))
@@ -64,13 +64,11 @@ def main(api_key, markup):
     attrs = None
 
     if match:
-        attrs = dict(
-            [
-                (key, value.strip())
+        attrs = {
+                key: value.strip()
                 for (key, value) in match.groupdict().items()
                 if value
-            ]
-        )
+        }
 
     else:
         raise ValueError(

@@ -67,12 +67,12 @@ def gram(preprocessor, tag, markup):
     # Parse the markup string
     match = ReGram.search(markup)
     if match:
-        attrs = dict(
-            [(key, val.strip()) for (key, val) in match.groupdict().items() if val]
-        )
+        attrs = {
+            key: val.strip() for (key, val) in match.groupdict().items() if val
+        }
     else:
         raise ValueError(
-            "Error processing input. " "Expected syntax: {0}".format(SYNTAX)
+            "Error processing input. " "Expected syntax: {}".format(SYNTAX)
         )
 
     # Construct URI
@@ -82,7 +82,7 @@ def gram(preprocessor, tag, markup):
     del attrs["shortcode"]
 
     if "size" in attrs:
-        size = "?size={0}".format(attrs["size"])
+        size = "?size={}".format(attrs["size"])
         url = url + size
         del attrs["size"]
 
@@ -104,9 +104,9 @@ def gram(preprocessor, tag, markup):
     # print('updated dict: '+repr(attrs))
 
     # Return the formatted text
-    return '<img src="{0}"{1}>'.format(
+    return '<img src="{}"{}>'.format(
         gram_url,
-        " ".join(' {0}="{1}"'.format(key, val) for (key, val) in attrs.items()),
+        " ".join(f' {key}="{val}"' for (key, val) in attrs.items()),
     )
 
 

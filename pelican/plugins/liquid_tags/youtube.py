@@ -100,7 +100,7 @@ def youtube(preprocessor, tag, markup):
             ).strip()
     else:
         raise ValueError(
-            "Error processing input, " "expected syntax: {0}".format(SYNTAX)
+            "Error processing input, " "expected syntax: {}".format(SYNTAX)
         )
 
     return youtube_out

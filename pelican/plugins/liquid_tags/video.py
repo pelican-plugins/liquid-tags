@@ -68,12 +68,12 @@ def video(preprocessor, tag, markup):
         for vid in videos:
             base, ext = os.path.splitext(vid)
             if ext not in VID_TYPEDICT:
-                raise ValueError("Unrecognized video extension: " "{0}".format(ext))
-            video_out += "<source src='{0}' " "{1}>".format(vid, VID_TYPEDICT[ext])
+                raise ValueError("Unrecognized video extension: " "{}".format(ext))
+            video_out += "<source src='{}' " "{}>".format(vid, VID_TYPEDICT[ext])
         video_out += "</video></span>"
     else:
         raise ValueError(
-            "Error processing input, " "expected syntax: {0}".format(SYNTAX)
+            "Error processing input, " "expected syntax: {}".format(SYNTAX)
         )
 
     return video_out
