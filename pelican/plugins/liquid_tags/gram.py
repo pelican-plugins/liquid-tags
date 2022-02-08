@@ -67,9 +67,7 @@ def gram(preprocessor, tag, markup):
     # Parse the markup string
     match = ReGram.search(markup)
     if match:
-        attrs = {
-            key: val.strip() for (key, val) in match.groupdict().items() if val
-        }
+        attrs = {key: val.strip() for (key, val) in match.groupdict().items() if val}
     else:
         raise ValueError(
             "Error processing input. " "Expected syntax: {}".format(SYNTAX)
