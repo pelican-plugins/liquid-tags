@@ -38,7 +38,8 @@ class fake_proc:
             """<a
                     href="https://www.youtube.com/watch?v=v78_WujMnVk"
                 class="youtube_video" alt="YouTube Video"
-                title="Click to view on YouTube">
+                title="Click to view on YouTube"
+                target="_blank" rel="noopener noreferrer">
                     <img width="1280" height="720"
                         src="https://img.youtube.com/vi/v78_WujMnVk/maxresdefault.jpg">
                 </a>""",
