@@ -70,16 +70,9 @@ class LiquidTags(markdown.Extension):
     """Wrapper for MDPreprocessor"""
 
     def __init__(self, config):
-        try:
-            # Needed for markdown versions >= 2.5
-            for key, value in LT_CONFIG.items():
-                self.config[key] = [value, LT_HELP[key]]
-            super().__init__(**config)
-        except AttributeError:
-            # Markdown versions < 2.5
-            for key, value in LT_CONFIG.items():
-                config[key] = [config[key], LT_HELP[key]]
-            super().__init__(config)
+        for key, value in LT_CONFIG.items():
+            self.config[key] = [value, LT_HELP[key]]
+        super().__init__(**config)
 
     @classmethod
     def register(cls, tag):
