@@ -35,7 +35,7 @@ ipython = {version = ">=7.16.1"}
 nbconvert = ">=6.0.7"
 
 [tool.poetry.dev-dependencies]
-black = {version = "^21.5b1", allow-prereleases = true}
+black = "^22.6.0"
 flake8 = "^3.9"
 flake8-black = "^0.2"
 invoke = "^1.3"
