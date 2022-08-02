@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+1.0.3 - 2022-08-02
+------------------
+
+* Fix Markdown >= 3.4 compatibility ([#20](https://github.com/pelican-plugins/liquid-tags/pull/20))
+
 1.0.2 - 2022-02-09
 ------------------
 
