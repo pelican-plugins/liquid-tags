@@ -302,6 +302,24 @@ comment line `# <!-- collapse=False -->` will be expanded on load but
 can be collapsed by tapping on their header. Cells without collapsed
 comments are rendered as standard code input cells.
 
+## Compatibility with [Jinja2Content plugin](https://github.com/pelican-plugins/jinja2content)
+
+Jinja2Content plugin allows you to use Jinja2 directives inside your Pelican
+articles and pages. You may encounter issues when using both Liquid Tags and
+Jinja2Content, because Liquid Tag's `{% tag %}` syntax is also valid Jinja2
+template syntax.
+
+Jinja2Content will process file first, and only rendered content is then
+processed by Liquid Tags. To ensure seamless operation of Liquid Tags, make
+sure that `{% tag %}` syntax appears **after** file is rendered by Jinja2.
+This can be achieved with [Jinja2 escaping](https://jinja.palletsprojects.com/en/latest/templates/#escaping):
+
+     {% raw %}{% my_liquid_tag arguments %}{% endraw %}
+
+<!-- -->
+
+     {{ '{%' }} my_liquid_tag arguments {{ '%}' }}
+
 ## Testing
 
 To run the plugin test suite, [set up your development environment][] and run:
