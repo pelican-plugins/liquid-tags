@@ -25,6 +25,11 @@ Configuration
 
   Embedded thumbnails have CSS class `youtube_video`, which can be used to add a Play button.
 
+- Using alternative YouTube frontend
+
+  If you want to use an invidious.io instance as alternative frontend to YouTube's,
+  you can set a `YOUTUBE_INVIDIOUS_INSTANCE` variable to the domain of the chosen instance.
+
 Syntax
 ------
 {% youtube id [width height] %}
@@ -63,6 +68,7 @@ def youtube(preprocessor, tag, markup):
 
     config_thumb_only = preprocessor.configs.getConfig("YOUTUBE_THUMB_ONLY")
     config_thumb_size = preprocessor.configs.getConfig("YOUTUBE_THUMB_SIZE")
+    config_invidious = preprocessor.configs.getConfig("YOUTUBE_INVIDIOUS_INSTANCE")
 
     thumb_sizes = {
         "maxres": [1280, 720],
@@ -89,43 +95,46 @@ def youtube(preprocessor, tag, markup):
         height = groups[3] or height
 
     if youtube_id:
+        youtube_frontend = _get_youtube_frontend(config_invidious)
         if config_thumb_only:
-            thumb_url = "https://img.youtube.com/vi/{youtube_id}".format(
-                youtube_id=youtube_id
-            )
+            thumb_url = _get_thumb_url(youtube_id, config_invidious)
 
-            youtube_out = """<a
-                    href="https://www.youtube.com/watch?v={youtube_id}"
+            youtube_out = f"""<a
+                    href="{youtube_frontend}/watch?v={youtube_id}"
                 class="youtube_video" alt="YouTube Video"
                 title="Click to view on YouTube"
                 target="_blank" rel="noopener noreferrer">
                     <img width="{width}" height="{height}"
-                        src="{thumb_url}/{size}default.jpg">
-                </a>""".format(
-                width=width,
-                height=height,
-                youtube_id=youtube_id,
-                size=config_thumb_size,
-                thumb_url=thumb_url,
-            )
+                        src="{thumb_url}/{config_thumb_size}default.jpg">
+                </a>"""
+
         else:
-            youtube_out = """
+            youtube_out = f"""
                 <span class="videobox">
                     <iframe width="{width}" height="{height}"
-                        src='https://www.youtube.com/embed/{youtube_id}'
+                        src='{youtube_frontend}/embed/{youtube_id}'
                         frameborder='0' webkitAllowFullScreen
                         mozallowfullscreen allowFullScreen>
                     </iframe>
                 </span>
-            """.format(
-                width=width, height=height, youtube_id=youtube_id
-            ).strip()
+            """.strip()
     else:
-        raise ValueError(
-            "Error processing input, " "expected syntax: {}".format(SYNTAX)
-        )
+        raise ValueError(f'Error processing input, " "expected syntax: {SYNTAX}')
 
     return youtube_out
+
+
+def _get_youtube_frontend(config_invidious):
+    if config_invidious:
+        return config_invidious
+    return "https://www.youtube.com"
+
+
+def _get_thumb_url(youtube_id, config_invidious):
+    yt_frontend = "https://img.youtube.com"
+    if config_invidious:
+        yt_frontend = config_invidious
+    return f"{yt_frontend}/vi/{youtube_id}"
 
 
 # ---------------------------------------------------
