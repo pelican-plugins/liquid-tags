@@ -119,7 +119,7 @@ def youtube(preprocessor, tag, markup):
                 </span>
             """.strip()
     else:
-        raise ValueError(f'Error processing input, " "expected syntax: {SYNTAX}')
+        raise ValueError(f"Error processing input, expected syntax: {SYNTAX}")
 
     return youtube_out
 
