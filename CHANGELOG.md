@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+1.0.4 - 2022-12-04
+------------------
+
+* Drop Python 3.6 from CI
+* Add invidious as supported YouTube frontend ([#31](https://github.com/pelican-plugins/liquid-tags/pull/31))
+
 1.0.3 - 2022-08-02
 ------------------
 
