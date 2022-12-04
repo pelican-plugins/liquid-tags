@@ -26,6 +26,7 @@ LT_CONFIG = {
     "IMG_DEFAULT_LOADING": "eager",
     "YOUTUBE_THUMB_ONLY": False,
     "YOUTUBE_THUMB_SIZE": "",
+    "YOUTUBE_INVIDIOUS_INSTANCE": "",
 }
 LT_HELP = {
     "CODE_DIR": "Code directory for include_code subplugin",
@@ -35,6 +36,7 @@ LT_HELP = {
     "IMG_DEFAULT_LOADING": "The default loading method of images (eager or lazy)",
     "YOUTUBE_THUMB_ONLY": "Embed a linked thumbnail instead 1MB of JS code",
     "YOUTUBE_THUMB_SIZE": "Thumbnail dimensions maxres/sd (default)/hq/mq",
+    "YOUTUBE_INVIDIOUS_INSTANCE": "Alternative YouTube frontend",
 }
 
 
