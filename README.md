@@ -137,6 +137,11 @@ mq    |  320 | 180
 Embedded thumbnails have CSS class `youtube_video`, which can be used to add
 a *Play* button.
 
+#### Using alternative YouTube frontend
+
+If you want to use an invidious.io instance as alternative frontend to YouTube's,
+you can set a `YOUTUBE_INVIDIOUS_INSTANCE` variable to the domain of the chosen instance.
+If you don't have your own instance, you can use one of the [public](https://docs.invidious.io/instances/) ones.
 ### Vimeo Tag
 
 To insert a Vimeo video into your content, enable the `vimeo`
