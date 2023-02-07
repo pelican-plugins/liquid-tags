@@ -15,7 +15,6 @@ pytest.skip("Test is currently broken, see pelican pr #1618", allow_module_level
 
 class TestNotebookTagRegex(unittest.TestCase):
     def get_argdict(self, markup):
-
         match = notebook.FORMAT.search(markup)
 
         if match:

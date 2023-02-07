@@ -48,7 +48,6 @@ def create_html(markup):
         audio_out = "<audio controls>"
 
         for audio_file in audio_files:
-
             base, ext = os.path.splitext(audio_file)
 
             if ext not in AUDIO_TYPEDICT:

@@ -61,7 +61,6 @@ ReTitleAlt = re.compile(
 
 @LiquidTags.register("gram")
 def gram(preprocessor, tag, markup):
-
     attrs = None
 
     # Parse the markup string
