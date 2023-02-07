@@ -72,7 +72,6 @@ FORMAT = re.compile(
 
 @LiquidTags.register("include_code")  # NOQA: C901
 def include_code(preprocessor, tag, markup):  # NOQA: C901
-
     title = None
     lang = None
     src = None

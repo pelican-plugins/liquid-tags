@@ -4,7 +4,6 @@ from .video import video
 
 
 class TestVideoTag(unittest.TestCase):
-
     maxDiff = None
 
     def setUp(self):
