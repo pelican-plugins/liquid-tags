@@ -1,6 +1,6 @@
 # Liquid Tags
 
-[![Build Status](https://img.shields.io/github/workflow/status/pelican-plugins/liquid-tags/build)](https://github.com/pelican-plugins/liquid-tags/actions)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/pelican-plugins/liquid-tags/main.yml?branch=main)](https://github.com/pelican-plugins/liquid-tags/actions)
 [![PyPI Version](https://img.shields.io/pypi/v/pelican-liquid-tags)](https://pypi.org/project/pelican-liquid-tags/)
 ![License](https://img.shields.io/pypi/l/pelican-liquid-tags?color=blue)
 
