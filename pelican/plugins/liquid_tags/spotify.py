@@ -19,6 +19,7 @@ Output
     width='300' height='380' frameborder='0' allowtransparency='true'>
 </iframe>
 """
+
 import re
 
 from .mdx_liquid_tags import LiquidTags

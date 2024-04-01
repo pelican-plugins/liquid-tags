@@ -21,6 +21,7 @@ Output
     src="//speakerdeck.com/assets/embed.js">
 </script>
 """
+
 import re
 
 from .mdx_liquid_tags import LiquidTags

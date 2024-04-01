@@ -18,6 +18,7 @@ Output
 
 [1] https://github.com/getpelican/pelican-plugins/blob/master/liquid_tags/video.py
 """
+
 import os
 import re
 

@@ -18,6 +18,7 @@ Not all config file variables are exposed - the set
 of variables are from the LIQUID_CONFIGS setting, which is a list of
 variables to pass to the liquid tags.
 """
+
 from .mdx_liquid_tags import LiquidTags
 
 

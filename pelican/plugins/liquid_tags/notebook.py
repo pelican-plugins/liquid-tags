@@ -47,6 +47,7 @@ this will insert the appropriate CSS.  All efforts have been made to ensure
 that this CSS will not override formats within the blog theme, but there may
 still be some conflicts.
 """
+
 from copy import deepcopy
 from functools import partial
 import os

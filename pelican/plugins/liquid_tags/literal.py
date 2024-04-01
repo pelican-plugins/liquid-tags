@@ -15,6 +15,7 @@ would result in the following line:
 This is useful when the resulting line would be interpreted as another
 liquid-style tag.
 """
+
 from .mdx_liquid_tags import LiquidTags
 
 

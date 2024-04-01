@@ -37,6 +37,7 @@ in the STATIC_PATHS setting, e.g.:
 
 [1] https://github.com/imathis/octopress/blob/master/plugins/include_code.rb
 """
+
 import os
 import re
 import sys

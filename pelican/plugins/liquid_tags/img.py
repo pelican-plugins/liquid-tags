@@ -36,6 +36,7 @@ Output
 
 [1] https://github.com/imathis/octopress/blob/master/plugins/image_tag.rb
 """
+
 import re
 
 from .mdx_liquid_tags import LiquidTags

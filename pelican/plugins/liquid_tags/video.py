@@ -22,6 +22,7 @@ Output
 
 [1] https://github.com/imathis/octopress/blob/master/plugins/video_tag.rb
 """
+
 import os
 import re
 

@@ -19,6 +19,7 @@ Output
 ------
 <a href="http://giphy.com/gifs/veronica-mars-aMSJFS6oFX0fC"><img src="http://media4.giphy.com/media/aMSJFS6oFX0fC/giphy.gif" alt="ive had some free time"></a>
 """
+
 import json
 import re
 

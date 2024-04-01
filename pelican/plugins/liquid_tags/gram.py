@@ -37,6 +37,7 @@ Output
 
     <img src="http://photos-c.ak.instagram.com/hphotos-ak-xaf1/t51.2885-15/917172_604907902963826_254280879_n.jpg" width="450" title="warehouse window title" alt="alt text" class="test_class instagram">
 """
+
 import re
 
 try:
